@@ -43,8 +43,6 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
 X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.20, random_state=42)
  
-
- 
 # Get the length of the train and validation data
 ntrain = len(X_train)
 nval = len(X_val)
@@ -53,27 +51,19 @@ print("X train length:", len(X_train))
 print("X validation length:", len(X_val))
 print("X test length:", len(X_test))
  
- 
- 
- 
 # Import CNN-related libraries
 import keras
 from keras import layers
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
  
-
  
 # Batch size (should be a factor of 2.***4,8,16,32,64...***)
 batch_size = 32
-
 # Dropout rate
 drop_rate = 0.2
- 
 # Number of epochs
 num_epochs = 500
- 
-
  
 # Initiate and build the model
 model = Sequential()
@@ -99,8 +89,6 @@ model.summary()
  
 # Compile the model (we can play with the optimizer)
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-               
 
 ## IF NEEDED we perform data augmentation
 # Set the transformations and augmentations for the training set (in cases of small datasets this helps)
@@ -158,9 +146,6 @@ predictions = model.predict(test_generator, steps =None, workers=1, use_multipro
  
 predictions = predictions > 0.5
  
-
- 
- 
 # Separate Confusion Matrices
 y_true = y_test
 y_pred = predictions
@@ -199,10 +184,7 @@ print("####")
 
 from sklearn import  metrics
 
-
-
 print(metrics.roc_auc_score(y_test, predictions))
-
 
 #Plot accuracy and loss
 plt.plot(history.history['accuracy'])
