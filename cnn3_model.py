@@ -11,14 +11,11 @@ def plot_roc_curve(fpr, tpr):
 import os
 import cv2
 import numpy as np
-from PIL import Image
 import matplotlib.pyplot as plt
 import random
 import glob
 import time
-from scipy import stats
 import keras
-from keras.utils.vis_utils import plot_model
 
 def read_and_process_image():
   ...
